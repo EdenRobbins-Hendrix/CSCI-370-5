@@ -28,6 +28,7 @@ public class PlayerInteract : MonoBehaviour
 
     void AttemptSpeak() {
         //Add code for dialogue here
+        interacting = false;
     }
 
     void AttemptOpen(){
@@ -42,6 +43,7 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
         }
+        interacting = false;
     }
 
 }
