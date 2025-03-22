@@ -6,9 +6,12 @@ public class NPCFlock : MonoBehaviour
     GameObject player;
     public float radius;
     Vector2 goal;
+    int timer;
+    public int maxTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        timer = maxTime;
         player = GameObject.FindWithTag("Player");
         PickSpot();
     }
@@ -20,7 +23,12 @@ public class NPCFlock : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, goal, speed);
         }
         else {
-            PickSpot();
+            if (timer <= 0) {
+                timer = maxTime;
+                PickSpot();}
+            else {
+                timer--;
+            }
         }
     }
 

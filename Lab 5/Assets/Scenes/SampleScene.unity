@@ -269,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba3cd4b20144484c9da67f1b7e2f3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 0}
   hBoundaryPercent: 0.4
   vBoundaryPercent: 0.4
   easing: 0.005
@@ -388,6 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb334553363ee44b83ad3759aeed93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  radius: 5
 --- !u!212 &1285449749
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -516,6 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135c4e362fd212c4995a01d685a87e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!212 &1412602999
 SpriteRenderer:
   m_ObjectHideFlags: 0
