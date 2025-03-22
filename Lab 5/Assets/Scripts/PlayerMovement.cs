@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
     Rigidbody2D self;
     Animator animator;
+    public float speed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
