@@ -49,4 +49,19 @@ public class PlayerLevelSteer : MonoBehaviour
 
 
     }
+
+    private void FixedUpdate()
+    {
+        body.AddForce(transform.up * vertical * swimSpeed);
+        transform.Rotate(Vector3.back * horizontal * rotateSpeed);
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.name.Contains("Prey"))
+        {
+            // GetComponent<AudioSource>().Play();
+            Debug.Log("Hit prey");
+        }
+    }
 }

@@ -14,31 +14,43 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
 
-    if (!interacting && Input.GetKeyDown(KeyCode.Return)) {
-        interacting = true;
-        AttemptSpeak();
-    }
-    if (!interacting && Input.GetKeyDown(KeyCode.Space)) {
-        AttemptOpen();
-    }
+        if (!interacting && Input.GetKeyDown(KeyCode.Return))
+        {
+            interacting = true;
+            AttemptSpeak();
+        }
+        if (!interacting && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space pressed");
+            AttemptOpen();
+        }
 
 
 
     }
 
-    void AttemptSpeak() {
+    void AttemptSpeak()
+    {
         //Add code for dialogue here
         interacting = false;
     }
 
-    void AttemptOpen(){
+    void AttemptOpen()
+    {
+        Debug.Log("attempt open called");
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, radius, Vector2.up, LayerMask.GetMask("LevelEntry"));
-        if (hit) {
-            if (hit.collider.gameObject.TryGetComponent(out Open open)) {
-                if (!open) {
+        if (hit)
+        {
+            Debug.Log("hit!");
+            if (hit.collider.gameObject.TryGetComponent(out Open open))
+            {
+                Debug.Log("got open script");
+                if (!open)
+                {
                     open.SetOpen();
                 }
-                else {
+                else
+                {
                     open.gameObject.GetComponent<Enter>().EnterScene();
                 }
             }
