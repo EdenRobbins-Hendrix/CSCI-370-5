@@ -23,38 +23,39 @@ public class PlayerLevelSteer : MonoBehaviour
     void FixedUpdate()
     {
         rotation += Input.GetAxisRaw("Vertical") * rotationSpeed;
-        if (rotation > 90) {
+        if (rotation > 90)
+        {
             rotation = 90;
         }
-        if (rotation < -90) {
+        if (rotation < -90)
+        {
             rotation = -90;
         }
         self.transform.eulerAngles = Vector3.forward * rotation;
-        push = Input.GetAxisRaw("Horizontal") * directionalSpeed;
-        if (push != 0) {
-            if (accelerationBuffer < 1) {
+        push = Input.GetAxisRaw("Horizontal") * directionalSpeed * Time.deltaTime;
+        if (push != 0)
+        {
+            if (accelerationBuffer < 1)
+            {
                 accelerationBuffer += accelerationFactor;
             }
-            else {
+            else
+            {
                 accelerationBuffer = 1;
             }
             push *= accelerationBuffer;
             self.transform.position += (self.transform.right * push);
-            Debug.Log(push + " " + accelerationBuffer + " " + accelerationFactor);
-            
+            // Debug.Log(push + " " + accelerationBuffer + " " + accelerationFactor);
+
         }
-        else {
+        else
+        {
             accelerationBuffer = 0;
         }
 
 
     }
 
-    private void FixedUpdate()
-    {
-        body.AddForce(transform.up * vertical * swimSpeed);
-        transform.Rotate(Vector3.back * horizontal * rotateSpeed);
-    }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
@@ -64,4 +65,18 @@ public class PlayerLevelSteer : MonoBehaviour
             Debug.Log("Hit prey");
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.Contains("Prey"))
+        {
+            // GetComponent<AudioSource>().Play();
+            Debug.Log("Hit prey");
+        }
+        else if (collision.gameObject.name.Contains("Predator"))
+        {
+            Debug.Log("Hit Predator");
+        }
+    }
+
 }
