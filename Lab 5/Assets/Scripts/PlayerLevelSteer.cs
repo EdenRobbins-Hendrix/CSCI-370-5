@@ -57,13 +57,18 @@ public class PlayerLevelSteer : MonoBehaviour
     }
 
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (coll.gameObject.name.Contains("Prey"))
+        if (collision.gameObject.name.Contains("Prey"))
         {
             // GetComponent<AudioSource>().Play();
             Debug.Log("Hit prey");
         }
+        else if (collision.gameObject.name.Contains("Predator"))
+        {
+            Debug.Log("Hit Predator");
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
