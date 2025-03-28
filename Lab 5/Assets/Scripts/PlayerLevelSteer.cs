@@ -33,14 +33,21 @@ public class PlayerLevelSteer : MonoBehaviour
         // {
         //     rotation = -90;
         // }
-        self.transform.eulerAngles = Vector3.forward * rotation;
         push = Input.GetAxisRaw("Horizontal") * directionalSpeed * Time.deltaTime;
         if (push < 0) {
             spriteRenderer.flipX = true;
         }
         else if (push > 0) {
             spriteRenderer.flipX = false;
+        
         }
+        if (spriteRenderer.flipX == true) {
+        self.transform.eulerAngles = Vector3.back * rotation;    
+        }
+        else {
+            self.transform.eulerAngles = Vector3.forward * rotation;
+        }
+        
         if (push != 0)
         {
             if (accelerationBuffer < 1)
