@@ -23,14 +23,14 @@ public class PlayerLevelSteer : MonoBehaviour
     void FixedUpdate()
     {
         rotation += Input.GetAxisRaw("Vertical") * rotationSpeed;
-        if (rotation > 90)
-        {
-            rotation = 90;
-        }
-        if (rotation < -90)
-        {
-            rotation = -90;
-        }
+        // if (rotation > 90)
+        // {
+        //     rotation = 90;
+        // }
+        // if (rotation < -90)
+        // {
+        //     rotation = -90;
+        // }
         self.transform.eulerAngles = Vector3.forward * rotation;
         push = Input.GetAxisRaw("Horizontal") * directionalSpeed * Time.deltaTime;
         if (push != 0)

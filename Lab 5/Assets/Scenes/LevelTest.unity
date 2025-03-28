@@ -153,7 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   target: {fileID: 1341296795}
-  dog: {fileID: 454469287}
 --- !u!212 &193728524
 SpriteRenderer:
   m_ObjectHideFlags: 0

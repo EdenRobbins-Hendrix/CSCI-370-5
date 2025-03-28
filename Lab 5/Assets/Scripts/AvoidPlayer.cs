@@ -7,7 +7,7 @@ public class AvoidPlayer : MonoBehaviour
 
     public float speed;
     public GameObject target;
-    public GameObject dog;
+    // public GameObject dog;
     public static float minDist;
 
     private bool tagged;
@@ -17,7 +17,7 @@ public class AvoidPlayer : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        minDist = 5.0f;
+        minDist = 2.0f;
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class AvoidPlayer : MonoBehaviour
             print("Seal!");
             minDist += 2;
             tagged = true;
-            GetComponent<AudioSource>().Play();
+            // GetComponent<AudioSource>().Play();
         }
 
     }
