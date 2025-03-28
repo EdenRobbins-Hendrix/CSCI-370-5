@@ -10,6 +10,7 @@ public class PlayerLevelSteer : MonoBehaviour
     public float accelerationFactor;
     Rigidbody2D self;
     Animator animator;
+    SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +18,7 @@ public class PlayerLevelSteer : MonoBehaviour
         rotation = 0;
         self = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,12 @@ public class PlayerLevelSteer : MonoBehaviour
         // }
         self.transform.eulerAngles = Vector3.forward * rotation;
         push = Input.GetAxisRaw("Horizontal") * directionalSpeed * Time.deltaTime;
+        if (push < 0) {
+            spriteRenderer.flipX = true;
+        }
+        else if (push > 0) {
+            spriteRenderer.flipX = false;
+        }
         if (push != 0)
         {
             if (accelerationBuffer < 1)
