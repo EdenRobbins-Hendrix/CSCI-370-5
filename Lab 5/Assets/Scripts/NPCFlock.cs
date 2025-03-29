@@ -8,9 +8,13 @@ public class NPCFlock : MonoBehaviour
     Vector2 goal;
     int timer;
     public int maxTime;
+    Animator animator;
+    SpriteRenderer sprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         timer = maxTime;
         player = GameObject.FindWithTag("Player");
         PickSpot();
@@ -20,9 +24,17 @@ public class NPCFlock : MonoBehaviour
     void FixedUpdate()
     {
         if (!transform.position.Equals(goal)) {
+            if (goal.x < transform.position.x) {
+                sprite.flipX = true;
+            }
+            else if (goal.x > transform.position.x){
+                sprite.flipX = false;
+            }
+            animator.SetBool("Moving", true);
             transform.position = Vector2.MoveTowards(transform.position, goal, speed);
         }
         else {
+            animator.SetBool("Moving", false);
             if (timer <= 0) {
                 timer = maxTime;
                 PickSpot();}

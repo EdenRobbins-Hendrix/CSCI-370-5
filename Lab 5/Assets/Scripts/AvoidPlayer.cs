@@ -20,7 +20,7 @@ public class AvoidPlayer : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
-        minDist = 2.0f;
+        minDist = 10.0f;
     }
 
     // Update is called once per frame
