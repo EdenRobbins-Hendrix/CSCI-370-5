@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e822b0a8848a4b647a08e0b2d4f8335c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   target: {fileID: 1341296795}
 --- !u!212 &193728524
 SpriteRenderer:
@@ -467,7 +467,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.5, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &454469292
 MonoBehaviour:
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1341296795}
   speed: 1
-  rotationSpeed: 0.25
+  rotationSpeed: 0.75
 --- !u!50 &454469293
 Rigidbody2D:
   serializedVersion: 5
