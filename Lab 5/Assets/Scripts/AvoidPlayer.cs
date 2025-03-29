@@ -9,7 +9,7 @@ public class AvoidPlayer : MonoBehaviour
     public float rotationSpeed;
     public GameObject target;
     // public GameObject dog;
-    public static float minDist;
+    public float minDist;
 
     private bool tagged;
     private Rigidbody2D body;
@@ -29,12 +29,17 @@ public class AvoidPlayer : MonoBehaviour
 
         if (target)
         {
-            Debug.Log("target is true?");
+            Debug.Log(name + "target is true?");
             Vector2 desired = target.transform.position - transform.position;
+            Debug.Log(name + "Desired: " + desired);
+            Debug.Log(name + "Magnitude: " + desired.magnitude);
+            Debug.Log(name + "Position: " + target.transform.position);
+
+
 
             if (desired.magnitude < minDist)
             {
-                print("avoiding seal?");
+                Debug.Log(name + " is avoiding seal");
                 float angle = (Mathf.Atan2(desired.y, desired.x) * Mathf.Rad2Deg);
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
                 transform.rotation = Quaternion.Slerp(transform.rotation,
