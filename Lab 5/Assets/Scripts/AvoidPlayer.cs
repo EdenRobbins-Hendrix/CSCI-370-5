@@ -29,11 +29,11 @@ public class AvoidPlayer : MonoBehaviour
 
         if (target)
         {
-            Debug.Log(name + "target is true?");
+            // Debug.Log(name + "target is true?");
             Vector2 desired = target.transform.position - transform.position;
-            Debug.Log(name + "Desired: " + desired);
-            Debug.Log(name + "Magnitude: " + desired.magnitude);
-            Debug.Log(name + "Position: " + target.transform.position);
+            // Debug.Log(name + "Desired: " + desired);
+            // Debug.Log(name + "Magnitude: " + desired.magnitude);
+            // Debug.Log(name + "Position: " + target.transform.position);
 
 
 
