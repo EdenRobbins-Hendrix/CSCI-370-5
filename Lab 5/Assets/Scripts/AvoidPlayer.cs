@@ -9,18 +9,25 @@ public class AvoidPlayer : MonoBehaviour
     public float rotationSpeed;
     public GameObject target;
     // public GameObject dog;
-    public float minDist;
+    public float minDistFromPlayer;
+    public float minDistToRegroup;
 
     private bool tagged;
     private Rigidbody2D body;
     SpriteRenderer spriteRenderer;
+    private bool isFleeing;
 
     // Use this for initialization
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
-        minDist = 2.0f;
+        minDistFromPlayer = 2.0f;
+        isFleeing = false;
+    }
+    public bool getIsFleeing()
+    {
+        return isFleeing;
     }
 
     // Update is called once per frame
@@ -37,8 +44,10 @@ public class AvoidPlayer : MonoBehaviour
 
 
 
-            if (desired.magnitude < minDist)
+            if (desired.magnitude < minDistFromPlayer)
             {
+                LevelGameManager.Instance.s();
+                isFleeing = true;
                 Debug.Log(name + " is avoiding seal");
                 float angle = (Mathf.Atan2(desired.y, desired.x) * Mathf.Rad2Deg);
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -46,7 +55,7 @@ public class AvoidPlayer : MonoBehaviour
                     q, Time.deltaTime * rotationSpeed);
 
 
-                float actual = desired.magnitude - minDist;
+                float actual = desired.magnitude - minDistFromPlayer;
                 body.AddForce(desired.normalized *
                     actual * speed - body.linearVelocity);
                 if (desired.x < 0)
@@ -62,6 +71,33 @@ public class AvoidPlayer : MonoBehaviour
                     spriteRenderer.flipX = true;
                 }
             }
+            //TODO: put this in a game manager. I think that will help with all the fish trying to go to different places
+            //if player is not near, try to regroup with other fish
+            else
+            {
+                isFleeing = false;
+                //             Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, minDistToRegroup, LayerMask.GetMask("Prey")); //find nearby fish
+                //             Collider2D col = colls[0];
+                //             if (col.gameObject != target)
+                //             {
+                //                 float xValue = (col.gameObject.transform.position.x + transform.position.x) / 2;
+                //                 float yValue = (col.gameObject.transform.position.y + transform.position.y) / 2;
+
+                //                 Vector2 meetPoint = new Vector2(xValue, yValue); //get middle between 2 fish
+
+                //                 foreach (Collider2D coll in colls)
+                //                 {
+                //                     coll.GetComponent<Rigidbody2D>().AddForce(meetPoint.normalized *
+                //                          speed - body.linearVelocity); //send each fish towards meet point
+
+                //                 }
+                //                 body.AddForce(meetPoint.normalized * //send current fish towards meetpoint
+                //  speed - body.linearVelocity);
+
+                //             }
+
+
+            }
         }
 
     }
@@ -71,7 +107,7 @@ public class AvoidPlayer : MonoBehaviour
         if (!tagged && coll.gameObject == target)
         {
             print("Seal!");
-            minDist += 2;
+            minDistFromPlayer += 2;
             tagged = true;
             // GetComponent<AudioSource>().Play();
         }
@@ -83,6 +119,6 @@ public class AvoidPlayer : MonoBehaviour
         Gizmos.color = Color.blue;
         Vector3 direction = GetComponent<Rigidbody2D>().linearVelocity;
         Gizmos.DrawRay(transform.position, direction);
-        Gizmos.DrawWireSphere(transform.position, minDist);
+        Gizmos.DrawWireSphere(transform.position, minDistFromPlayer);
     }
 }
