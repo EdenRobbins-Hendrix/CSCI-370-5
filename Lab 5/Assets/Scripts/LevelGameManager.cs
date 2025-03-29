@@ -55,7 +55,7 @@ public class LevelGameManager : MonoBehaviour
         //send each fish to meetpoint. It may be better to handle this in the fish move area...
         foreach (GameObject fish in safeFish)
         {
-            fish.transform.position = Vector2.MoveTowards(fish.transform.position, meetPoint, fish.GetComponent<AvoidPlayer>().speed);
+            fish.transform.position = Vector2.MoveTowards(fish.transform.position, meetPoint, fish.GetComponent<AvoidPlayer>().speed * Time.deltaTime);
             // fish.GetComponent<Rigidbody2D>().AddForce(meetPoint.normalized *
             //                     fish.GetComponent<AvoidPlayer>().speed - fish.GetComponent<Rigidbody2D>().linearVelocity); //send each fish towards meet point
         }
