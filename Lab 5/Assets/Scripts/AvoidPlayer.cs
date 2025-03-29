@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AvoidPlayer : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class AvoidPlayer : MonoBehaviour
                 LevelGameManager.Instance.s();
                 isFleeing = true;
                 Debug.Log(name + " is avoiding seal");
-                float angle = (Mathf.Atan2(desired.y, desired.x) * Mathf.Rad2Deg);
+                float angle = Mathf.Atan2(desired.y, desired.x) * Mathf.Rad2Deg - 180;
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
                 transform.rotation = Quaternion.Slerp(transform.rotation,
                     q, Time.deltaTime * rotationSpeed);
@@ -58,18 +59,18 @@ public class AvoidPlayer : MonoBehaviour
                 float actual = desired.magnitude - minDistFromPlayer;
                 body.AddForce(desired.normalized *
                     actual * speed - body.linearVelocity);
-                if (desired.x < 0)
-                {
-                    // spriteRenderer.flipX = true;
-                    spriteRenderer.flipY = true;
-                    spriteRenderer.flipX = true;
-                }
-                else
-                {
-                    // spriteRenderer.flipX = false;
-                    spriteRenderer.flipY = false;
-                    spriteRenderer.flipX = true;
-                }
+                // if (desired.x < 0)
+                // {
+                //     // spriteRenderer.flipX = true;
+                //     spriteRenderer.flipY = true;
+                //     spriteRenderer.flipX = true;
+                // }
+                // else
+                // {
+                //     // spriteRenderer.flipX = false;
+                //     spriteRenderer.flipY = false;
+                //     spriteRenderer.flipX = true;
+                // }
             }
             //TODO: put this in a game manager. I think that will help with all the fish trying to go to different places
             //if player is not near, try to regroup with other fish
@@ -99,6 +100,45 @@ public class AvoidPlayer : MonoBehaviour
 
             }
         }
+
+    }
+
+    public void moveToSpot(Vector3 v)
+    {
+        Vector2 desired = v - transform.position;
+
+
+        float angle = Mathf.Atan2(desired.y, desired.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            q, Time.deltaTime * rotationSpeed);
+
+
+        // float actual = desired.magnitude - minDistFromPlayer;
+        body.AddForce(desired.normalized *
+              speed - body.linearVelocity);
+        // if (desired.x < 0 && desired.y < 0)
+        // {
+        //     // spriteRenderer.flipX = true;
+        //     spriteRenderer.flipY = true;
+        //     spriteRenderer.flipX = true;
+        // }
+        // else if (desired.x < 0 && desired.y > 0)
+        // {
+        //     spriteRenderer.flipY = false;
+        //     spriteRenderer.flipX = true;
+        // }
+        // else if (desired.x > 0 && desired.y < 0)
+        // {
+        //     spriteRenderer.flipY = true;
+        //     spriteRenderer.flipX = false;
+        // }
+        // else
+        // {
+        //     // spriteRenderer.flipX = false;
+        //     spriteRenderer.flipY = false;
+        //     spriteRenderer.flipX = false;
+        // }
 
     }
 

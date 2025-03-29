@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class LevelGameManager : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class LevelGameManager : MonoBehaviour
 
 
         //get meetPoint
-        Vector2 meetPoint;
+        Vector3 meetPoint;
         float sumX = 0;
         float sumY = 0;
         int total = 0;
@@ -50,14 +51,15 @@ public class LevelGameManager : MonoBehaviour
             sumY += fish.transform.position.y;
             total += 1;
         }
-        meetPoint = new Vector2(sumX / total, sumY / total);
+        meetPoint = new Vector3(sumX / total, sumY / total);
         Debug.Log(meetPoint);
-        //send each fish to meetpoint. It may be better to handle this in the fish move area...
+        //send each fish to meetpoint. It may be better to handle this in the fish move area. TODO handle this with rigid bodies in fish move area
         foreach (GameObject fish in safeFish)
         {
-            fish.transform.position = Vector2.MoveTowards(fish.transform.position, meetPoint, fish.GetComponent<AvoidPlayer>().speed * Time.deltaTime);
+            fish.GetComponent<AvoidPlayer>().moveToSpot(meetPoint);
+            // fish.transform.position = Vector2.MoveTowards(fish.transform.position, meetPoint, fish.GetComponent<AvoidPlayer>().speed * Time.deltaTime);
             // fish.GetComponent<Rigidbody2D>().AddForce(meetPoint.normalized *
-            //                     fish.GetComponent<AvoidPlayer>().speed - fish.GetComponent<Rigidbody2D>().linearVelocity); //send each fish towards meet point
+            //                     fish.GetComponent<AvoidPlayer>().speed - fish.GetComponent<Rigidbody2D>().linearVelocity); I am not sure what is wrong, but basically the fish all just drift in one direction. 
         }
         yield return null;
     }
