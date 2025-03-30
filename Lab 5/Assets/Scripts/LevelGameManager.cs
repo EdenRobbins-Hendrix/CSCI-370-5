@@ -18,6 +18,11 @@ public class LevelGameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void Start()
+    {
+        InvokeRepeating("PickSpot", 0.5f, 10.0f);
+    }
+
     void FixedUpdate()
     {
         StartCoroutine(haveFishMeetup());
@@ -41,7 +46,6 @@ public class LevelGameManager : MonoBehaviour
 
 
         //get meetPoint
-        Vector3 meetPoint;
         float sumX = 0;
         float sumY = 0;
         int total = 0;
@@ -51,11 +55,11 @@ public class LevelGameManager : MonoBehaviour
             sumY += fish.transform.position.y;
             total += 1;
         }
-        meetPoint = new Vector3(sumX / total, sumY / total);
-        Debug.Log(meetPoint);
+        middlePoint = new Vector3(sumX / total, sumY / total);
         //send each fish to meetpoint. It may be better to handle this in the fish move area. TODO handle this with rigid bodies in fish move area
         foreach (GameObject fish in safeFish)
         {
+
             fish.GetComponent<AvoidPlayer>().moveToSpot(meetPoint);
             // fish.transform.position = Vector2.MoveTowards(fish.transform.position, meetPoint, fish.GetComponent<AvoidPlayer>().speed * Time.deltaTime);
             // fish.GetComponent<Rigidbody2D>().AddForce(meetPoint.normalized *
@@ -67,17 +71,21 @@ public class LevelGameManager : MonoBehaviour
     {
         Debug.Log("this starts the manager");
     }
-
+    Vector2 meetPoint;
+    Vector3 middlePoint;
+    void PickSpot()
+    {
+        int radius = 20;
+        Vector2 circle = Random.insideUnitCircle * radius;
+        meetPoint = new Vector2(circle.x + middlePoint.x, circle.y + middlePoint.y);
+        Debug.Log("meet spot: " + meetPoint);
+    }
 
 
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
