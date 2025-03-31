@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4e30acfcfff0c4d91acde0cba79d77, type: 3}
+  m_Name: Rudy1
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Big Boy? Is that you?
+  - "Mimi almost pushed me into this huge ice crack earlier cuz I beat her sliding
+    down the hill.\r"
+  - "I'm sure that there would've been a lot of tasty fish under there, but I'm too
+    scared of orcas.\r"
+  - "\rMaybe you could try to get some fish for us?"

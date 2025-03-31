@@ -10,9 +10,11 @@ public class NPCFlock : MonoBehaviour
     public int maxTime;
     Animator animator;
     SpriteRenderer sprite;
+    public bool moving;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        moving = true;
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         timer = maxTime;

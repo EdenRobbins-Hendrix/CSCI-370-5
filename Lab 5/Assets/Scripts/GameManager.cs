@@ -34,15 +34,16 @@ public class GameManager : MonoBehaviour
     bool skipLineTriggered;
 
     public int playerWeight;
-    public void StartDialogue(string[] dialogue, int startPosition, string name)
+    public void StartDialogue(NPC npc)
     {
-        nameText.text = name + "...";
+        npc.halt();
+        nameText.text = npc.name + "...";
         dialoguePanel.SetActive(true);
         StopAllCoroutines();
-        StartCoroutine(RunDialogue(dialogue, startPosition));
+        StartCoroutine(RunDialogue(npc.dialogueAsset().dialogue, npc.StartPosition, npc));
     }
 
-    IEnumerator RunDialogue(string[] dialogue, int startPosition)
+    IEnumerator RunDialogue(string[] dialogue, int startPosition, NPC npc)
     {
         skipLineTriggered = false;
         OnDialogueStarted?.Invoke();
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
 
         OnDialogueEnded?.Invoke();
         dialoguePanel.SetActive(false);
+        npc.walk();
     }
 
     public void SkipLine()
