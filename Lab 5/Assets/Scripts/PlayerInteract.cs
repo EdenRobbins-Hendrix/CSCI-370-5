@@ -7,6 +7,7 @@ public class PlayerInteract : MonoBehaviour
     bool talking;
     Animator animator;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,6 +51,7 @@ public class PlayerInteract : MonoBehaviour
 
                 if (hit.collider.gameObject.TryGetComponent(out NPC npc))
                 {
+                    talking = true;
                     GameManager.Instance.StartDialogue(npc);
                 }
             }
