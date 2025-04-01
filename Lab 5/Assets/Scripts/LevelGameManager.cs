@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class LevelGameManager : MonoBehaviour
 {
@@ -21,15 +23,20 @@ public class LevelGameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public float timePassed = 0.0f;
     void Start()
     {
         InvokeRepeating("PickSpot", 0.5f, 10.0f);
     }
-
+    public TextMeshProUGUI timerText;
     void FixedUpdate()
     {
         haveFishMeetup();
+        timePassed += Time.deltaTime;
+        Debug.Log("Time Passed: " + timePassed);
+        timerText.text = "Time: " + Math.Round(timePassed, 1);
     }
+
 
     public static LevelGameManager Instance { get; private set; }
 
@@ -95,7 +102,6 @@ public class LevelGameManager : MonoBehaviour
         Destroy(prey);
 
     }
-
 
 
 
