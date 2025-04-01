@@ -10,6 +10,7 @@ public class PlayerLevelSteer : MonoBehaviour
     public float accelerationFactor;
     Rigidbody2D self;
     Animator animator;
+    SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,22 +18,40 @@ public class PlayerLevelSteer : MonoBehaviour
         rotation = 0;
         self = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         rotation += Input.GetAxisRaw("Vertical") * rotationSpeed;
-        if (rotation > 90)
-        {
-            rotation = 90;
-        }
-        if (rotation < -90)
-        {
-            rotation = -90;
-        }
-        self.transform.eulerAngles = Vector3.forward * rotation;
+        // if (rotation > 90)
+        // {
+        //     rotation = 90;
+        // }
+        // if (rotation < -90)
+        // {
+        //     rotation = -90;
+        // }
         push = Input.GetAxisRaw("Horizontal") * directionalSpeed * Time.deltaTime;
+        if (push < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (push > 0)
+        {
+            spriteRenderer.flipX = false;
+
+        }
+        if (spriteRenderer.flipX == true)
+        {
+            self.transform.eulerAngles = Vector3.back * rotation;
+        }
+        else
+        {
+            self.transform.eulerAngles = Vector3.forward * rotation;
+        }
+
         if (push != 0)
         {
             if (accelerationBuffer < 1)
@@ -57,13 +76,19 @@ public class PlayerLevelSteer : MonoBehaviour
     }
 
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (coll.gameObject.name.Contains("Prey"))
+        if (collision.gameObject.name.Contains("Prey"))
         {
             // GetComponent<AudioSource>().Play();
-            Debug.Log("Hit prey");
+            Debug.Log("Prey Eaten!!");
+            LevelGameManager.Instance.eatPrey(collision.gameObject);
         }
+        else if (collision.gameObject.name.Contains("Predator"))
+        {
+            Debug.Log("Hit Predator");
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
