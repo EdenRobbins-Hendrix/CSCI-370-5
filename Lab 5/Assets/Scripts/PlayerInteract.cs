@@ -48,7 +48,8 @@ public class PlayerInteract : MonoBehaviour
                 talking = 0;
             }
         }
-        else {
+        else
+        {
             Debug.Log("Looking for NPC");
             RaycastHit2D hit = Physics2D.CircleCast(transform.position, radius, Vector2.up, 0, LayerMask.GetMask("NPC"));
             if (hit)
@@ -62,7 +63,7 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
         }
-        
+
         //Add code for dialogue here
     }
 
@@ -89,7 +90,7 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-void JoinConversation()
+    void JoinConversation()
     {
     }
 
