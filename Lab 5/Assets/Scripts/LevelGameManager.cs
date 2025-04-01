@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class LevelGameManager : MonoBehaviour
 {
+    public TextMeshProUGUI totalFishCaughtText;
 
     void Awake()
     {
@@ -81,11 +84,16 @@ public class LevelGameManager : MonoBehaviour
         meetPoint = new Vector2(circle.x + middlePoint.x, circle.y + middlePoint.y);
         Debug.Log("meet spot: " + meetPoint);
     }
-
+    private int totalFishCaught = 0;
     public void eatPrey(GameObject prey)
     {
+        Debug.Log("Prey Eaten!");
+        totalFishCaught += 1;
+        totalFishCaughtText.text = "Fish Caught: " + totalFishCaught;
+
         fishList.Remove(prey);
         Destroy(prey);
+
     }
 
 
