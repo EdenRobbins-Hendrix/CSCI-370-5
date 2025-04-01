@@ -4,13 +4,14 @@ public class PlayerInteract : MonoBehaviour
 {
     bool interacting;
     public float radius;
-    bool talking;
+    int talking;
     Animator animator;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        talking = 0;
         interacting = false;
         animator = GetComponent<Animator>();
     }
@@ -24,8 +25,9 @@ public class PlayerInteract : MonoBehaviour
             interacting = true;
             AttemptSpeak();
         }
-        if (!interacting && !talking && Input.GetKeyDown(KeyCode.Space))
+        if (!interacting && talking == 0 && Input.GetKeyDown(KeyCode.Space))
         {
+            interacting = true;
             Debug.Log("Space pressed");
             AttemptOpen();
         }
@@ -37,10 +39,14 @@ public class PlayerInteract : MonoBehaviour
     }
 
     void AttemptSpeak()
-    {   if (talking)
+    {   if (talking > 0)
         {
             Debug.Log("Skipping Line");
             GameManager.Instance.SkipLine();
+            talking++;
+            if (talking > 3) {
+                talking = 0;
+            }
         }
         else {
             Debug.Log("Looking for NPC");
@@ -51,7 +57,7 @@ public class PlayerInteract : MonoBehaviour
 
                 if (hit.collider.gameObject.TryGetComponent(out NPC npc))
                 {
-                    talking = true;
+                    talking = 1;
                     GameManager.Instance.StartDialogue(npc);
                 }
             }
@@ -85,12 +91,10 @@ public class PlayerInteract : MonoBehaviour
 
 void JoinConversation()
     {
-        talking = true;
     }
 
     void LeaveConversation()
     {
-        talking = false;
     }
 
 
