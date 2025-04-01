@@ -25,13 +25,13 @@ public class LevelGameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        StartCoroutine(haveFishMeetup());
+        haveFishMeetup();
     }
 
     public static LevelGameManager Instance { get; private set; }
 
-    public List<GameObject> fishList;
-    IEnumerator haveFishMeetup()
+    [SerializeField] List<GameObject> fishList;
+    public void haveFishMeetup()
     {
         Debug.Log("fish meetup begun");
         //get safe fishes
@@ -65,7 +65,8 @@ public class LevelGameManager : MonoBehaviour
             // fish.GetComponent<Rigidbody2D>().AddForce(meetPoint.normalized *
             //                     fish.GetComponent<AvoidPlayer>().speed - fish.GetComponent<Rigidbody2D>().linearVelocity); I am not sure what is wrong, but basically the fish all just drift in one direction. 
         }
-        yield return null;
+        safeFish.Clear();
+        // yield return null;
     }
     public void s()
     {
@@ -79,6 +80,12 @@ public class LevelGameManager : MonoBehaviour
         Vector2 circle = Random.insideUnitCircle * radius;
         meetPoint = new Vector2(circle.x + middlePoint.x, circle.y + middlePoint.y);
         Debug.Log("meet spot: " + meetPoint);
+    }
+
+    public void eatPrey(GameObject prey)
+    {
+        fishList.Remove(prey);
+        Destroy(prey);
     }
 
 

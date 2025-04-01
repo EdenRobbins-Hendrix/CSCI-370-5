@@ -16,14 +16,13 @@ public class AvoidPlayer : MonoBehaviour
     private bool tagged;
     private Rigidbody2D body;
     SpriteRenderer spriteRenderer;
-    private bool isFleeing;
+    [SerializeField] private bool isFleeing;
 
     // Use this for initialization
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
-        minDistFromPlayer = 2.0f;
         isFleeing = false;
     }
     public bool getIsFleeing()
@@ -39,6 +38,8 @@ public class AvoidPlayer : MonoBehaviour
         {
             // Debug.Log(name + "target is true?");
             Vector2 desired = target.transform.position - transform.position;
+            Debug.Log(name + ": " + desired);
+            Debug.Log(name + "normalized: " + desired.normalized);
             // Debug.Log(name + "Desired: " + desired);
             // Debug.Log(name + "Magnitude: " + desired.magnitude);
             // Debug.Log(name + "Position: " + target.transform.position);
@@ -57,8 +58,9 @@ public class AvoidPlayer : MonoBehaviour
 
 
                 float actual = desired.magnitude - minDistFromPlayer;
-                body.AddForce(desired.normalized *
-                    actual * speed - body.linearVelocity);
+                Vector2 k = desired.normalized *
+                    actual * speed - body.linearVelocity;
+                body.AddForce(k);
                 // if (desired.x < 0)
                 // {
                 //     // spriteRenderer.flipX = true;
@@ -146,8 +148,7 @@ public class AvoidPlayer : MonoBehaviour
     {
         if (!tagged && coll.gameObject == target)
         {
-            print("Seal!");
-            minDistFromPlayer += 2;
+            print("Seal attack!");
             tagged = true;
             // GetComponent<AudioSource>().Play();
         }

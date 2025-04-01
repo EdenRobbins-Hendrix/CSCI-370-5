@@ -113,14 +113,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    Vector2 PickSpot(Vector3 middlePoint)
-    {
-        int radius = 5;
-        Vector2 circle = Random.insideUnitCircle * radius;
-        Vector2 goal;
-        goal = new Vector2(circle.x + middlePoint.x, circle.y + middlePoint.y);
-        return goal;
-    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
