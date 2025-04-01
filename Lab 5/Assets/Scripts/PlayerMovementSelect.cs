@@ -5,7 +5,7 @@ public class PlayerMovementSelect : MonoBehaviour
 {
     public Animator animator;
 
-    // public ParticleSystem dust;
+    public ParticleSystem dust;
 
     Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
@@ -48,17 +48,15 @@ public class PlayerMovementSelect : MonoBehaviour
             newDir = 0;
         }
 
-        // if (dir != newDir) { // Determines if direction changes, plays dust
-        //     dir = newDir;
-        //     createDust();
-        // }
+        if (dir != newDir) { // Determines if direction changes, plays dust
+            dir = newDir;
+            createDust();
+        }
 
         if (Input.GetKeyDown("space") && m_Grounded)
         {
-            // createDust();
+            createDust();
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * 300);
-            // animator.SetBool("IsJumping", true);
-            // Debug.Log("space key was pressed");
         }
 
     }
@@ -85,12 +83,7 @@ public class PlayerMovementSelect : MonoBehaviour
 		}
 	}
 
-    // public void Landed() {
-    //     // createDust();
-    //     animator.SetBool("IsJumping", false);
-    // }
-
-    // void createDust() {
-    //     dust.Play();
-    // }
+    void createDust() {
+        dust.Play();
+    }
 }
