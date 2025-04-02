@@ -17,13 +17,14 @@ public class PlayerMovementSelect : MonoBehaviour
 
     public int dir = 1;
     public int newDir = 1;
-
+    public AudioSource SFX;
     public UnityEvent OnLandEvent;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SFX.Pause();
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -40,12 +41,17 @@ public class PlayerMovementSelect : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         if (horizontal < 0) {
+            SFX.UnPause();
             spriteRenderer.flipX = true;
             newDir = 1;
         } 
-        if (horizontal > 0) {
+        else if (horizontal > 0) {
+            SFX.UnPause();
             spriteRenderer.flipX = false;
             newDir = 0;
+        }
+        else {
+            SFX.Pause();
         }
 
         if (dir != newDir) { // Determines if direction changes, plays dust
