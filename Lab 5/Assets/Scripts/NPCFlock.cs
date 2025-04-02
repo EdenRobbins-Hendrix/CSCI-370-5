@@ -5,8 +5,9 @@ public class NPCFlock : MonoBehaviour
     public float speed;
     GameObject player;
     public float radius;
+    float waitVariability;
     float goal;
-    int timer;
+    float timer;
     public int maxTime;
     Animator animator;
     SpriteRenderer sprite;
@@ -14,17 +15,22 @@ public class NPCFlock : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        changeWait();
         moving = true;
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        timer = maxTime;
+        timer = maxTime + waitVariability;
         player = GameObject.FindWithTag("Player");
         PickSpot();
     }
 
+    void changeWait() {
+        waitVariability = Random.Range(-maxTime/2, maxTime/2);
+    }
+
     // Update is called once per frame
     void FixedUpdate()
-    {
+    {   changeWait();
         if (transform.position.x != goal) {
             if (goal < transform.position.x) {
                 sprite.flipX = true;
@@ -38,7 +44,7 @@ public class NPCFlock : MonoBehaviour
         else {
             animator.SetBool("Moving", false);
             if (timer <= 0) {
-                timer = maxTime;
+                timer = maxTime + waitVariability;
                 PickSpot();}
             else {
                 timer--;
