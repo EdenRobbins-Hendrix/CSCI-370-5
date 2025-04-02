@@ -25,7 +25,7 @@ public class NPCFlock : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!transform.position.Equals(goal)) {
+        if (!transform.position.x.Equals(goal.x)) {
             if (goal.x < transform.position.x) {
                 sprite.flipX = true;
             }
