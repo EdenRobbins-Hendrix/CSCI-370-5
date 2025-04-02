@@ -9,7 +9,7 @@ public class Keep : MonoBehaviour
     }
 
     public void KeepAlive() {
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject.transform.parent.gameObject);
     }
 
     // Update is called once per frame
