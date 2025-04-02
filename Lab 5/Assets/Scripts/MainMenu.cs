@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private AudioClip buttonClickSound;
 
     public SoundMixerManager soundMixerManager;
-
+    
     public void PlayGame() 
     {
         SceneManager.LoadScene("Game");
@@ -17,4 +17,5 @@ public class MainMenu : MonoBehaviour
     {
         SoundFXManager.instance.PlayButtonClick(buttonClickSound, transform, 1f);
     }
+
 }
