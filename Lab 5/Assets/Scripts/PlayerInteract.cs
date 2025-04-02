@@ -6,6 +6,7 @@ public class PlayerInteract : MonoBehaviour
     public float radius;
     int talking;
     Animator animator;
+    public AudioSource enter;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -84,6 +85,7 @@ public class PlayerInteract : MonoBehaviour
                 }
                 else
                 {
+                    enter.Play();
                     open.gameObject.GetComponent<Enter>().EnterScene();
                 }
             }

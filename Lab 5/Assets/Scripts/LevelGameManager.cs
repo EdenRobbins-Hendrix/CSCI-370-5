@@ -41,6 +41,7 @@ public class LevelGameManager : MonoBehaviour
     public static LevelGameManager Instance { get; private set; }
 
     [SerializeField] List<GameObject> fishList;
+    public AudioSource crunch;
     public void haveFishMeetup()
     {
         Debug.Log("fish meetup begun");
@@ -95,6 +96,7 @@ public class LevelGameManager : MonoBehaviour
     public void eatPrey(GameObject prey)
     {
         Debug.Log("Prey Eaten!");
+        crunch.Play();
         totalFishCaught += 1;
         totalFishCaughtText.text = "Fish Caught: " + totalFishCaught;
 

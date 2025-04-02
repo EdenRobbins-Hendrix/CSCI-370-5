@@ -7,8 +7,10 @@ using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
+
 public class GameManager : MonoBehaviour
 {
+    public AudioSource enter;
     void Awake()
     {
         if (Instance == null)
