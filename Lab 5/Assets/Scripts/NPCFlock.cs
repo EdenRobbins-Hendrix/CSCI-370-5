@@ -5,7 +5,7 @@ public class NPCFlock : MonoBehaviour
     public float speed;
     GameObject player;
     public float radius;
-    Vector2 goal;
+    float goal;
     int timer;
     public int maxTime;
     Animator animator;
@@ -25,15 +25,15 @@ public class NPCFlock : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!transform.position.x.Equals(goal.x)) {
-            if (goal.x < transform.position.x) {
+        if (transform.position.x != goal) {
+            if (goal < transform.position.x) {
                 sprite.flipX = true;
             }
-            else if (goal.x > transform.position.x){
+            else if (goal > transform.position.x){
                 sprite.flipX = false;
             }
             animator.SetBool("Moving", true);
-            transform.position = Vector2.MoveTowards(transform.position, goal, speed);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2 (goal, transform.position.y), speed);
         }
         else {
             animator.SetBool("Moving", false);
@@ -47,8 +47,8 @@ public class NPCFlock : MonoBehaviour
     }
 
     void PickSpot(){
-        Vector2 circle = Random.insideUnitCircle * radius;
-        goal = new Vector2(circle.x + player.transform.position.x, transform.position.y);
+        float circle = Random.Range(-1, 1) * radius;
+        goal = circle + player.transform.position.x;
         Debug.Log("The goal is: " + goal);
     }
 }
