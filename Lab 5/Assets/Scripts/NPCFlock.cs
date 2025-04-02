@@ -48,6 +48,6 @@ public class NPCFlock : MonoBehaviour
 
     void PickSpot(){
         Vector2 circle = Random.insideUnitCircle * radius;
-        goal = new Vector2(circle.x + player.transform.position.x, circle.y + player.transform.position.y);
+        goal = new Vector2(circle.x + player.transform.position.x, transform.position.y);
     }
 }
