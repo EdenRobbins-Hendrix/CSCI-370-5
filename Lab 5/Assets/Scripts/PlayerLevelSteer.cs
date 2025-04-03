@@ -4,13 +4,16 @@ public class PlayerLevelSteer : MonoBehaviour
 {
     public float rotationSpeed;
     float rotation;
-    public float directionalSpeed;
+    [SerializeField]
+    private float directionalSpeed;
     float push;
     float accelerationBuffer;
     public float accelerationFactor;
     Rigidbody2D self;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private int energy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +22,7 @@ public class PlayerLevelSteer : MonoBehaviour
         self = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        energy = 10;
     }
 
     // Update is called once per frame
@@ -83,6 +87,8 @@ public class PlayerLevelSteer : MonoBehaviour
             // GetComponent<AudioSource>().Play();
             Debug.Log("Prey Eaten!!");
             LevelGameManager.Instance.eatPrey(collision.gameObject);
+            energy += 5;
+            reCalculateEnergy();
         }
         else if (collision.gameObject.name.Contains("Predator"))
         {
@@ -91,17 +97,71 @@ public class PlayerLevelSteer : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void decrementEnergy()
     {
-        if (collision.gameObject.name.Contains("Prey"))
+        energy -= 1;
+        reCalculateEnergy();
+    }
+
+    public void reCalculateEnergy()
+    {
+        if (energy > 10)
         {
-            // GetComponent<AudioSource>().Play();
-            Debug.Log("Hit prey");
+            directionalSpeed = 5.0f;
         }
-        else if (collision.gameObject.name.Contains("Predator"))
+        else if (energy > 9)
         {
-            Debug.Log("Hit Predator");
+            directionalSpeed = 4.0f;
+        }
+        else if (energy > 8)
+        {
+            directionalSpeed = 3.75f;
+        }
+        else if (energy > 7)
+        {
+            directionalSpeed = 3.5f;
+        }
+        else if (energy > 6)
+        {
+            directionalSpeed = 3.25f;
+        }
+        else if (energy > 5)
+        {
+            directionalSpeed = 3.0f;
+        }
+        else if (energy > 4)
+        {
+            directionalSpeed = 2.75f;
+        }
+        else if (energy > 3)
+        {
+            directionalSpeed = 2.5f;
+        }
+        else if (energy > 2)
+        {
+            directionalSpeed = 2.0f;
+        }
+        else if (energy > 1)
+        {
+            directionalSpeed = 1.5f;
+        }
+        else
+        {
+            directionalSpeed = 1.0f;
         }
     }
+
+    // void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.name.Contains("Prey"))
+    //     {
+    //         // GetComponent<AudioSource>().Play();
+    //         Debug.Log("Hit prey");
+    //     }
+    //     else if (collision.gameObject.name.Contains("Predator"))
+    //     {
+    //         Debug.Log("Hit Predator");
+    //     }
+    // }
 
 }
