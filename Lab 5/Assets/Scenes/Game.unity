@@ -337,7 +337,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &83119487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2614,7 +2614,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 7
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5625, y: 0.5625, z: 0}
+  m_ChunkCullingBounds: {x: 0.03125, y: 0.03125, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -4424,7 +4424,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 7
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5625, y: 0.5625, z: 0}
+  m_ChunkCullingBounds: {x: 0.03125, y: 0.03125, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -5322,7 +5322,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 7
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5625, y: 0.5625, z: 0}
+  m_ChunkCullingBounds: {x: 0.03125, y: 0.03125, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -5932,7 +5932,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1285449752
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6641,7 +6641,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1354783333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7336,7 +7336,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1395735325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8180,7 +8180,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1427012031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8886,7 +8886,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 7
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5625, y: 0.5625, z: 0}
+  m_ChunkCullingBounds: {x: 0.03125, y: 0.03125, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
