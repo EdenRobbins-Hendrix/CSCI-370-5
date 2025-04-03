@@ -149,6 +149,19 @@ public class PlayerLevelSteer : MonoBehaviour
         {
             directionalSpeed = 1.0f;
         }
+        int j = 0;
+        while (j < 10)
+        {
+            LevelGameManager.Instance.removeCube(j);
+            j += 1;
+        }
+        int i = 0;
+        while (i < energy && i < 10)
+        {
+            LevelGameManager.Instance.addCube(i);
+            i += 1;
+
+        }
     }
 
     // void OnTriggerEnter2D(Collider2D collision)

@@ -120,6 +120,32 @@ public class LevelGameManager : MonoBehaviour
 
     }
 
+    [SerializeField] List<GameObject> energyCubes;
+
+    public void addCube(int index)
+    {
+        GameObject cube = energyCubes[index];
+        Renderer renderer = cube.GetComponent<Renderer>();
+        Color currentColor = renderer.material.color;
+        Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
+        renderer.material.color = newColor;
+    }
+    public void removeCube(int index)
+    {
+        GameObject cube = energyCubes[index];
+        Renderer renderer = cube.GetComponent<Renderer>();
+        Color currentColor = renderer.material.color;
+        Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0);
+        renderer.material.color = newColor;
+    }
+    public void changeCubeColor(Color color)
+    {
+        foreach (GameObject cube in energyCubes)
+        {
+            cube.GetComponent<Renderer>().material.color = color;
+        }
+    }
+
 
 
 
