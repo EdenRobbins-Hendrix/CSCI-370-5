@@ -398,7 +398,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 9
   m_Sprite: {fileID: 6730317180361324986, guid: 5b762d48bc7c9b343bca1660159627a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1332,6 +1332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 340260948}
   - component: {fileID: 340260947}
+  - component: {fileID: 340260949}
   m_Layer: 0
   m_Name: Hills
   m_TagString: Untagged
@@ -1382,7 +1383,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: ff62f87800a62b34e8d2f3914bc2d17f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1409,6 +1410,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &340260949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340260946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbc8b8f60767eb42b79b93aaf955254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundSize: 0
+  parallaxSpeed: 0.6666667
+  sortOrder: 3
+  sprite: {fileID: 0}
 --- !u!1 &424802488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2595,7 +2612,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 7
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5625, y: 0.5625, z: 0}
   m_MaxChunkCount: 16
@@ -4063,6 +4080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 889066422}
   - component: {fileID: 889066421}
+  - component: {fileID: 889066423}
   m_Layer: 0
   m_Name: Clouds
   m_TagString: Untagged
@@ -4113,7 +4131,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4553ff5a96c512e429ea0dc796079ef5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4140,6 +4158,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &889066423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889066420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbc8b8f60767eb42b79b93aaf955254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundSize: 0
+  parallaxSpeed: 0.8333333
+  sortOrder: 2
+  sprite: {fileID: 0}
 --- !u!1 &928327571
 GameObject:
   m_ObjectHideFlags: 0
@@ -4388,7 +4422,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5625, y: 0.5625, z: 0}
   m_MaxChunkCount: 16
@@ -5005,6 +5039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1091875099}
   - component: {fileID: 1091875098}
+  - component: {fileID: 1091875100}
   m_Layer: 0
   m_Name: Cliff 1
   m_TagString: Untagged
@@ -5055,7 +5090,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: fba30c073bf6d2348953c4be115af3ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5082,6 +5117,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091875100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091875097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbc8b8f60767eb42b79b93aaf955254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundSize: 0
+  parallaxSpeed: 0.33333334
+  sortOrder: 5
+  sprite: {fileID: 0}
 --- !u!1 &1134467252
 GameObject:
   m_ObjectHideFlags: 0
@@ -5269,7 +5320,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5625, y: 0.5625, z: 0}
   m_MaxChunkCount: 16
@@ -5828,7 +5879,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 9
   m_Sprite: {fileID: 4339171056970282239, guid: 02e10060d414bc347ae8ff0559497a40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6651,7 +6702,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 9
   m_Sprite: {fileID: 6841991538942837029, guid: c0912e5ae6204194980638a3d117c450, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7346,7 +7397,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 9
   m_Sprite: {fileID: 2365138587032172342, guid: 3b5c1c42b78f46547b964668f5c6d1d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7521,6 +7572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1407479824}
   - component: {fileID: 1407479823}
+  - component: {fileID: 1407479825}
   m_Layer: 0
   m_Name: Cliff 2
   m_TagString: Untagged
@@ -7571,7 +7623,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 88a523f90d899294a99785271d068aaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7598,6 +7650,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1407479825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407479822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbc8b8f60767eb42b79b93aaf955254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundSize: 0
+  parallaxSpeed: 0.5
+  sortOrder: 4
+  sprite: {fileID: 0}
 --- !u!1 &1412602997
 GameObject:
   m_ObjectHideFlags: 0
@@ -7665,7 +7733,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: -8960374872204692983, guid: 015a666e66da00b4a8e896f000fde874, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8173,7 +8241,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 9
   m_Sprite: {fileID: 7388917533364105089, guid: 5a371effdac70004d95bcd2c9f3baea2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8816,7 +8884,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 7
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5625, y: 0.5625, z: 0}
   m_MaxChunkCount: 16
@@ -14133,6 +14201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2016743555}
   - component: {fileID: 2016743554}
+  - component: {fileID: 2016743556}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -14183,7 +14252,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 57cc6cc7fbed1cc459f7600f137356c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14210,6 +14279,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2016743556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016743553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbc8b8f60767eb42b79b93aaf955254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundSize: 0
+  parallaxSpeed: 0.16666667
+  sortOrder: 6
+  sprite: {fileID: 0}
 --- !u!1 &2026362803
 GameObject:
   m_ObjectHideFlags: 0
@@ -14220,6 +14305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2026362805}
   - component: {fileID: 2026362804}
+  - component: {fileID: 2026362806}
   m_Layer: 0
   m_Name: Sky
   m_TagString: Untagged
@@ -14270,7 +14356,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6da19c797cd7c864da06976b6d6ad864, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14297,6 +14383,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2026362806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026362803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbc8b8f60767eb42b79b93aaf955254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundSize: 0
+  parallaxSpeed: 1
+  sortOrder: 0
+  sprite: {fileID: 0}
 --- !u!1 &2039283671
 GameObject:
   m_ObjectHideFlags: 0
@@ -14883,8 +14985,8 @@ SceneRoots:
   - {fileID: 2016743555}
   - {fileID: 1091875099}
   - {fileID: 1407479824}
-  - {fileID: 889066422}
   - {fileID: 340260948}
+  - {fileID: 889066422}
   - {fileID: 2026362805}
   - {fileID: 563770326}
   - {fileID: 1475197190}
