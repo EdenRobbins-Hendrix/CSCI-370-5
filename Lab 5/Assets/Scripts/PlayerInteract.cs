@@ -7,11 +7,18 @@ public class PlayerInteract : MonoBehaviour
     int talking;
     Animator animator;
     public AudioSource enter;
+    float timer;
+    public float maxTime;
+    NPC mostRecent;
+    bool ticking;
+    public GameObject dialoguePanel;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        ticking = false;
+        timer = 0;
         talking = 0;
         interacting = false;
         animator = GetComponent<Animator>();
@@ -39,6 +46,20 @@ public class PlayerInteract : MonoBehaviour
 
     }
 
+    void FixedUpdate()
+    {
+        if (ticking) {
+            if (timer <= 0) {
+            Debug.Log("Ding!");
+            ticking = false;
+        }
+    else {
+        Debug.Log("Tick! " + timer);
+        timer -= Time.deltaTime;
+        }   
+    }
+    }
+
     void AttemptSpeak()
     {   if (talking > 0)
         {
@@ -46,7 +67,9 @@ public class PlayerInteract : MonoBehaviour
             GameManager.Instance.SkipLine();
             talking++;
             if (talking > 3) {
+                ticking = true;
                 talking = 0;
+                dialoguePanel.SetActive(false);
             }
         }
         else
@@ -57,9 +80,11 @@ public class PlayerInteract : MonoBehaviour
             {
                 Debug.Log("Hit Something!!" + hit.collider.gameObject.name);
 
-                if (hit.collider.gameObject.TryGetComponent(out NPC npc))
+                if (hit.collider.gameObject.TryGetComponent(out NPC npc) && !ticking)
                 {
+                    mostRecent = npc;
                     talking = 1;
+                    timer = maxTime;
                     GameManager.Instance.StartDialogue(npc);
                 }
             }
