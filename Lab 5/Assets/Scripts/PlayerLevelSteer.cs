@@ -162,6 +162,16 @@ public class PlayerLevelSteer : MonoBehaviour
             i += 1;
 
         }
+        if (energy > 7)
+        {
+            LevelGameManager.Instance.changeCubeColor(Color.green);
+        }
+        else if (energy > 3)
+        {
+            Debug.Log("Change colors to yellow");
+            LevelGameManager.Instance.changeCubeColor(new Color(0.9117833f, 0.9371068f, 0.05009684f));
+        }
+        else { LevelGameManager.Instance.changeCubeColor(Color.red); }
     }
 
     // void OnTriggerEnter2D(Collider2D collision)

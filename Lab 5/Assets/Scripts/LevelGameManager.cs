@@ -28,7 +28,7 @@ public class LevelGameManager : MonoBehaviour
     public float timePassed = 0.0f;
     void Start()
     {
-        InvokeRepeating("PickSpot", 0.5f, 10.0f);
+        InvokeRepeating("PickSpot", 0.5f, 3.0f);
         InvokeRepeating("reduceEnergy", 5.0f, 5.0f);
     }
     public TextMeshProUGUI timerText;
@@ -125,24 +125,27 @@ public class LevelGameManager : MonoBehaviour
     public void addCube(int index)
     {
         GameObject cube = energyCubes[index];
-        Renderer renderer = cube.GetComponent<Renderer>();
-        Color currentColor = renderer.material.color;
+        SpriteRenderer renderer = cube.GetComponent<SpriteRenderer>();
+        Color currentColor = renderer.color;
         Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
-        renderer.material.color = newColor;
+        renderer.color = newColor;
     }
     public void removeCube(int index)
     {
         GameObject cube = energyCubes[index];
-        Renderer renderer = cube.GetComponent<Renderer>();
-        Color currentColor = renderer.material.color;
+        SpriteRenderer renderer = cube.GetComponent<SpriteRenderer>();
+        Color currentColor = renderer.color;
         Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0);
-        renderer.material.color = newColor;
+        renderer.color = newColor;
     }
     public void changeCubeColor(Color color)
     {
         foreach (GameObject cube in energyCubes)
         {
-            cube.GetComponent<Renderer>().material.color = color;
+            Color currentColor = cube.GetComponent<SpriteRenderer>().color;
+            float alpha = currentColor.a;
+            Color newColor = new Color(color.r, color.g, color.b, alpha);
+            cube.GetComponent<SpriteRenderer>().color = newColor;
         }
     }
 
