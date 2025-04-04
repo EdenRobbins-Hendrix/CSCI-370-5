@@ -74,6 +74,5 @@ public class NPCFlock : MonoBehaviour
         float circle = Random.Range(-1, 1) * radius;
         circle += (radius/2);
         goal = circle + player.transform.position.x;
-        Debug.Log("The goal is: " + goal + ". The base is " + circle);
     }
 }

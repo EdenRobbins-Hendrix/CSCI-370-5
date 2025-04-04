@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
@@ -10,6 +11,7 @@ using Random = UnityEngine.Random;
 public class LevelGameManager : MonoBehaviour
 {
     public TextMeshProUGUI totalFishCaughtText;
+    public GameObject player;
 
     void Awake()
     {
@@ -27,6 +29,7 @@ public class LevelGameManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("PickSpot", 0.5f, 10.0f);
+        InvokeRepeating("reduceEnergy", 5.0f, 5.0f);
     }
     public TextMeshProUGUI timerText;
     void FixedUpdate()
@@ -104,6 +107,47 @@ public class LevelGameManager : MonoBehaviour
         Destroy(prey);
 
     }
+
+    public void returnToLevelSelect()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void reduceEnergy()
+    {
+        player.GetComponent<PlayerLevelSteer>().decrementEnergy();
+        Debug.Log("Energy Decremented");
+
+    }
+
+    [SerializeField] List<GameObject> energyCubes;
+
+    public void addCube(int index)
+    {
+        GameObject cube = energyCubes[index];
+        Renderer renderer = cube.GetComponent<Renderer>();
+        Color currentColor = renderer.material.color;
+        Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
+        renderer.material.color = newColor;
+    }
+    public void removeCube(int index)
+    {
+        GameObject cube = energyCubes[index];
+        Renderer renderer = cube.GetComponent<Renderer>();
+        Color currentColor = renderer.material.color;
+        Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0);
+        renderer.material.color = newColor;
+    }
+    public void changeCubeColor(Color color)
+    {
+        foreach (GameObject cube in energyCubes)
+        {
+            cube.GetComponent<Renderer>().material.color = color;
+        }
+    }
+
+
+
 
 
 
