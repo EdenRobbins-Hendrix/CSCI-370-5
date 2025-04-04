@@ -18606,6 +18606,17 @@ MonoBehaviour:
   - {fileID: 1896731771}
   - {fileID: 1415877735}
   crunch: {fileID: 1248707900}
+  energyCubes:
+  - {fileID: 1850532874}
+  - {fileID: 816972616}
+  - {fileID: 1406888680}
+  - {fileID: 1170397797}
+  - {fileID: 1560601757}
+  - {fileID: 1556609458}
+  - {fileID: 187934594}
+  - {fileID: 591880995}
+  - {fileID: 468512815}
+  - {fileID: 1534670878}
 --- !u!82 &1248707900
 AudioSource:
   m_ObjectHideFlags: 0

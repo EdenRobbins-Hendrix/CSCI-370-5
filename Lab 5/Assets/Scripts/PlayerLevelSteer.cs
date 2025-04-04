@@ -23,11 +23,19 @@ public class PlayerLevelSteer : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         energy = 10;
+        LevelGameManager.Instance.flipEnergyBar();
     }
 
+    private bool flipped = false;
+    private bool goingLeft = false;
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (flipped)
+        {
+            flipped = false;
+            LevelGameManager.Instance.flipEnergyBar();
+        }
         rotation += Input.GetAxisRaw("Vertical") * rotationSpeed;
         // if (rotation > 90)
         // {
@@ -38,14 +46,17 @@ public class PlayerLevelSteer : MonoBehaviour
         //     rotation = -90;
         // }
         push = Input.GetAxisRaw("Horizontal") * directionalSpeed * Time.deltaTime;
-        if (push < 0)
+        if (push < 0 && !goingLeft)
         {
+            flipped = true;
+            goingLeft = true;
             spriteRenderer.flipX = true;
         }
-        else if (push > 0)
+        else if (push > 0 && goingLeft)
         {
+            flipped = true;
+            goingLeft = false;
             spriteRenderer.flipX = false;
-
         }
         if (spriteRenderer.flipX == true)
         {
@@ -101,6 +112,17 @@ public class PlayerLevelSteer : MonoBehaviour
     {
         energy -= 1;
         reCalculateEnergy();
+        if (energy < 10)
+        {
+            LevelGameManager.Instance.flipCube(energy);
+            Debug.Log("Cube Flipped: " + energy);
+        }
+    }
+    public void addEnergy(int amount)
+    {
+        energy += amount;
+        reCalculateEnergy();
+
     }
 
     public void reCalculateEnergy()
@@ -148,19 +170,6 @@ public class PlayerLevelSteer : MonoBehaviour
         else
         {
             directionalSpeed = 1.0f;
-        }
-        int j = 0;
-        while (j < 10)
-        {
-            LevelGameManager.Instance.removeCube(j);
-            j += 1;
-        }
-        int i = 0;
-        while (i < energy && i < 10)
-        {
-            LevelGameManager.Instance.addCube(i);
-            i += 1;
-
         }
         if (energy > 7)
         {
