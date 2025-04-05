@@ -4,11 +4,11 @@ public class Open : MonoBehaviour
 {
     public bool opened;
     public int requiredWeight;
-    GameManager manager;
+    SpriteRenderer sprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        manager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -17,7 +17,8 @@ public class Open : MonoBehaviour
     }
 
     public void SetOpen() {
-        if (requiredWeight <= manager.playerWeight){
+        if (requiredWeight <= GameManager.Instance.playerWeight){
+        Destroy(sprite);
         opened = true;
         Debug.Log("Crack!");}
     }

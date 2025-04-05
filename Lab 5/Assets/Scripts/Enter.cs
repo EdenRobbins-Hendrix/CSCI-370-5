@@ -18,7 +18,7 @@ public class Enter : MonoBehaviour
 
     public void EnterScene() {
         if (GetComponent<Open>().opened) {
-            //Initiate.Fade(sceneName, Color.black, 0.5f);
+            Initiate.Fade(sceneName, Color.black, 0.5f);
             Debug.Log("Come on in!");
         }
     }
