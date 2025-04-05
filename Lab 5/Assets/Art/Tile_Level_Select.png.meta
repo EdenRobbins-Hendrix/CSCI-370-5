@@ -281,9 +281,9 @@ TextureImporter:
       name: Tile_Level_Select_6
       rect:
         serializedVersion: 2
-        x: 165
+        x: 166
         y: 164
-        width: 34
+        width: 32
         height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -304,9 +304,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 165
-        y: 131
+        y: 132
         width: 34
-        height: 33
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,7 +328,7 @@ TextureImporter:
         x: 0
         y: 99
         width: 34
-        height: 35
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -427,6 +427,7 @@ TextureImporter:
       Tile_Level_Select_1: 6345553589206838256
       Tile_Level_Select_10: -465842619789952332
       Tile_Level_Select_11: 8030473865150199287
+      Tile_Level_Select_12: 1772121208
       Tile_Level_Select_2: 5365645952595241234
       Tile_Level_Select_3: 3334268433057908103
       Tile_Level_Select_4: -5193633066848049032
