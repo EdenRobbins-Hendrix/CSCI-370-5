@@ -122,22 +122,6 @@ public class LevelGameManager : MonoBehaviour
 
     [SerializeField] List<GameObject> energyCubes;
 
-    // public void addCube(int index)
-    // {
-    //     GameObject cube = energyCubes[index];
-    //     SpriteRenderer renderer = cube.GetComponent<SpriteRenderer>();
-    //     Color currentColor = renderer.color;
-    //     Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
-    //     renderer.color = newColor;
-    // }
-    // public void removeCube(int index)
-    // {
-    //     GameObject cube = energyCubes[index];
-    //     SpriteRenderer renderer = cube.GetComponent<SpriteRenderer>();
-    //     Color currentColor = renderer.color;
-    //     Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0);
-    //     renderer.color = newColor;
-    // }
     public void changeCubeColor(Color color)
     {
         foreach (GameObject cube in energyCubes)
@@ -166,23 +150,6 @@ public class LevelGameManager : MonoBehaviour
         }
         renderer.color = newColor;
 
-    }
-    public void flipEnergyBar()
-    {
-        foreach (GameObject cube in energyCubes)
-        {
-            Vector3 formerPosition = cube.transform.position;
-            Vector3 desiredPosition;
-            float newX = cube.transform.localPosition.x;
-
-            cube.transform.localPosition = new Vector3(newX * -1, 0, 0);
-            // desiredPosition = new Vector3(newX, cube.transform.position.y);
-            // cube.transform.position = desiredPosition;
-
-            // Debug.Log("FormerPosition: " + formerPosition);
-            // Debug.Log("DesiredPosition: " + desiredPosition);
-        }
-        Debug.Log("EnergyBar flip is complete");
     }
 
     public void flipEnergyUnitss()
@@ -223,7 +190,7 @@ public class LevelGameManager : MonoBehaviour
     public void playerHit()
     {
         //decrease health
-        int damage = 25;
+        int damage = 100;
         bool dead = player.GetComponent<PlayerHealth>().decreaseHealth(damage);
 
         //TODO: I would like to display some kind of particle and sound as a feedback here
@@ -239,6 +206,7 @@ public class LevelGameManager : MonoBehaviour
         else
         {
             //Some kind of speed boost here would be good
+
         }
 
     }

@@ -62,6 +62,7 @@ public class PredatorSteer : MonoBehaviour
         {
             // GetComponent<AudioSource>().Play();
             Debug.Log("Player Hit!!");
+            LevelGameManager.Instance.playerHit();
         }
     }
 }

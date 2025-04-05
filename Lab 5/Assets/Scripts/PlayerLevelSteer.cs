@@ -22,8 +22,7 @@ public class PlayerLevelSteer : MonoBehaviour
         self = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        energy = 10;
-        LevelGameManager.Instance.flipEnergyBar();
+        // LevelGameManager.Instance.flipEnergyBar();
     }
 
     private bool flipped = false;
@@ -34,7 +33,7 @@ public class PlayerLevelSteer : MonoBehaviour
         if (flipped)
         {
             flipped = false;
-            LevelGameManager.Instance.flipEnergyBar();
+            // LevelGameManager.Instance.flipEnergyBar();
         }
         rotation += Input.GetAxisRaw("Vertical") * rotationSpeed;
         // if (rotation > 90)
@@ -110,7 +109,7 @@ public class PlayerLevelSteer : MonoBehaviour
 
     public void decrementEnergy()
     {
-        energy -= 1;
+        energy = energy - 1;
         reCalculateEnergy();
         if (energy < 10)
         {
@@ -124,53 +123,60 @@ public class PlayerLevelSteer : MonoBehaviour
         reCalculateEnergy();
 
     }
-
+    public float topSpeed;
+    public float speedDrop;
+    public float startingSpeed;
     public void reCalculateEnergy()
     {
-        if (energy > 10)
+        if (energy >= 10)
         {
-            directionalSpeed = 5.0f;
-        }
-        else if (energy > 9)
-        {
-            directionalSpeed = 4.0f;
-        }
-        else if (energy > 8)
-        {
-            directionalSpeed = 3.75f;
-        }
-        else if (energy > 7)
-        {
-            directionalSpeed = 3.5f;
-        }
-        else if (energy > 6)
-        {
-            directionalSpeed = 3.25f;
-        }
-        else if (energy > 5)
-        {
-            directionalSpeed = 3.0f;
-        }
-        else if (energy > 4)
-        {
-            directionalSpeed = 2.75f;
-        }
-        else if (energy > 3)
-        {
-            directionalSpeed = 2.5f;
-        }
-        else if (energy > 2)
-        {
-            directionalSpeed = 2.0f;
-        }
-        else if (energy > 1)
-        {
-            directionalSpeed = 1.5f;
+            directionalSpeed = topSpeed;
         }
         else
         {
-            directionalSpeed = 1.0f;
+            int difference = 10 - energy;
+            directionalSpeed = startingSpeed - (speedDrop * difference);
         }
+        // else if (energy > 9)
+        // {
+        //     directionalSpeed = 4.0f;
+        // }
+        // else if (energy > 8)
+        // {
+        //     directionalSpeed = 3.75f;
+        // }
+        // else if (energy > 7)
+        // {
+        //     directionalSpeed = 3.5f;
+        // }
+        // else if (energy > 6)
+        // {
+        //     directionalSpeed = 3.25f;
+        // }
+        // else if (energy > 5)
+        // {
+        //     directionalSpeed = 3.0f;
+        // }
+        // else if (energy > 4)
+        // {
+        //     directionalSpeed = 2.75f;
+        // }
+        // else if (energy > 3)
+        // {
+        //     directionalSpeed = 2.5f;
+        // }
+        // else if (energy > 2)
+        // {
+        //     directionalSpeed = 2.0f;
+        // }
+        // else if (energy > 1)
+        // {
+        //     directionalSpeed = 1.5f;
+        // }
+        // else
+        // {
+        //     directionalSpeed = 1.0f;
+        // }
         if (energy > 7)
         {
             LevelGameManager.Instance.changeCubeColor(Color.green);
