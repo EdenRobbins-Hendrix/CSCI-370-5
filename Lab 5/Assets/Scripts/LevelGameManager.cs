@@ -28,7 +28,7 @@ public class LevelGameManager : MonoBehaviour
     public float timePassed = 0.0f;
     void Start()
     {
-        InvokeRepeating("PickSpot", 0.5f, 10.0f);
+        InvokeRepeating("PickSpot", 0.5f, 3.0f);
         InvokeRepeating("reduceEnergy", 5.0f, 5.0f);
     }
     public TextMeshProUGUI timerText;
@@ -122,28 +122,125 @@ public class LevelGameManager : MonoBehaviour
 
     [SerializeField] List<GameObject> energyCubes;
 
-    public void addCube(int index)
-    {
-        GameObject cube = energyCubes[index];
-        Renderer renderer = cube.GetComponent<Renderer>();
-        Color currentColor = renderer.material.color;
-        Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
-        renderer.material.color = newColor;
-    }
-    public void removeCube(int index)
-    {
-        GameObject cube = energyCubes[index];
-        Renderer renderer = cube.GetComponent<Renderer>();
-        Color currentColor = renderer.material.color;
-        Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0);
-        renderer.material.color = newColor;
-    }
+    // public void addCube(int index)
+    // {
+    //     GameObject cube = energyCubes[index];
+    //     SpriteRenderer renderer = cube.GetComponent<SpriteRenderer>();
+    //     Color currentColor = renderer.color;
+    //     Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
+    //     renderer.color = newColor;
+    // }
+    // public void removeCube(int index)
+    // {
+    //     GameObject cube = energyCubes[index];
+    //     SpriteRenderer renderer = cube.GetComponent<SpriteRenderer>();
+    //     Color currentColor = renderer.color;
+    //     Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0);
+    //     renderer.color = newColor;
+    // }
     public void changeCubeColor(Color color)
     {
         foreach (GameObject cube in energyCubes)
         {
-            cube.GetComponent<Renderer>().material.color = color;
+            Color currentColor = cube.GetComponent<SpriteRenderer>().color;
+            float alpha = currentColor.a;
+            Color newColor = new Color(color.r, color.g, color.b, alpha);
+            cube.GetComponent<SpriteRenderer>().color = newColor;
         }
+    }
+    public void flipCube(int index)
+    {
+        GameObject cube = energyCubes[index];
+        SpriteRenderer renderer = cube.GetComponent<SpriteRenderer>();
+        Color currentColor = renderer.color;
+        Color newColor;
+        if (currentColor.a == 0)
+        {
+            newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1.0f);
+
+        }
+        else
+        {
+            newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0.0f);
+
+        }
+        renderer.color = newColor;
+
+    }
+    public void flipEnergyBar()
+    {
+        foreach (GameObject cube in energyCubes)
+        {
+            Vector3 formerPosition = cube.transform.position;
+            Vector3 desiredPosition;
+            float newX = cube.transform.localPosition.x;
+
+            cube.transform.localPosition = new Vector3(newX * -1, 0, 0);
+            // desiredPosition = new Vector3(newX, cube.transform.position.y);
+            // cube.transform.position = desiredPosition;
+
+            // Debug.Log("FormerPosition: " + formerPosition);
+            // Debug.Log("DesiredPosition: " + desiredPosition);
+        }
+        Debug.Log("EnergyBar flip is complete");
+    }
+
+    public void flipEnergyUnitss()
+    {
+        //TODO: it might be easeier to just move the x position of each unit to currentPosition.x * -1
+
+
+        // get count of active units
+        List<int> activeUnits = new List<int>();
+        int i = 0;
+        Debug.Log("Count: " + energyCubes.Count);
+        while (i < energyCubes.Count)
+        {
+            SpriteRenderer SR = energyCubes[i].GetComponent<SpriteRenderer>();
+            if (SR.color.a != 0.0f)
+            {
+                activeUnits.Add(i);
+            }
+            i += 1;
+        }
+        Debug.Log("Active units count: " + activeUnits.Count);
+        int j = 0;
+        while (j < energyCubes.Count)
+        {
+            if (j < activeUnits.Count)
+            {
+                flipCube(j);
+                Debug.Log("Flipped j: " + j);
+                Debug.Log("minus: " + (energyCubes.Count - j));
+                flipCube(energyCubes.Count - j);
+                Debug.Log("FFlipped: " + j + " and " + (energyCubes.Count - j));
+            }
+            j += 1;
+        }
+    }
+
+    // effect of player getting hit by the predator
+    public void playerHit()
+    {
+        //decrease health
+        int damage = 25;
+        bool dead = player.GetComponent<PlayerHealth>().decreaseHealth(damage);
+
+        //TODO: I would like to display some kind of particle and sound as a feedback here
+
+        //if player died:
+        if (dead)
+        {
+            //display some kind of death message?
+
+            returnToLevelSelect();
+        }
+
+        else
+        {
+            //Some kind of speed boost here would be good
+        }
+
     }
 
 
