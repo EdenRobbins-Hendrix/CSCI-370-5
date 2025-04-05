@@ -66,7 +66,7 @@ public class PlayerInteract : MonoBehaviour
             Debug.Log("Skipping Line");
             GameManager.Instance.SkipLine();
             talking++;
-            if (talking > 3) {
+            if (talking > 4) {
                 ticking = true;
                 talking = 0;
                 dialoguePanel.SetActive(false);
