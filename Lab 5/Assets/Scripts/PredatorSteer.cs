@@ -13,7 +13,6 @@ public class PredatorSteer : MonoBehaviour
     private Rigidbody2D body;
     SpriteRenderer spriteRenderer;
 
-
     // Use this for initialization
     void Start()
     {
@@ -26,12 +25,14 @@ public class PredatorSteer : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 desired = (target.transform.position - transform.position).normalized;
-        body.AddForce(desired * speed - body.linearVelocity);
 
-        float angle = (Mathf.Atan2(desired.y, desired.x) * Mathf.Rad2Deg);
+        float angle = Mathf.Atan2(desired.y, desired.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation,
             q, Time.deltaTime * rotationSpeed);
+
+
+        body.AddForce(desired.normalized * body.mass * speed - (body.linearVelocity * body.mass));
 
         if (desired.x < 0)
         {
@@ -40,7 +41,7 @@ public class PredatorSteer : MonoBehaviour
         }
         else
         {
-            // spriteRenderer.flipX = false;
+            // spriteRenderer. flipX = false;
             spriteRenderer.flipY = false;
         }
 
