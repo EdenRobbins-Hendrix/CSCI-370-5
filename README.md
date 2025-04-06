@@ -9,9 +9,15 @@ Mechanics: Talking to NPCs, entering levels, eating fish, losing energy, running
 \
 Aesthetics: Meant to invoke a cold, yet fun aesthetic in music, backgrounds, and sprites. \
 \
-Joys: I (Eden) made all original art for the interactive scenes, as well as two original tracks. It was very fun! \
+Joys: \
+Eden - I made all original art for the interactive scenes, as well as two original tracks. It was very fun! \
 \
-Struggles: So. Many. Assets. Also that time when Unity decided to delete all the game objects in the level select scene. \
+Fin - I made all of the menu systems from memory this time, except for the new options menu, which felt pretty good (since I didn't need to watch a tutorial for it). I also really enjoyed learning how to make the options menu. \
+\
+Struggles: \
+Eden - So. Many. Assets. Also that time when Unity decided to delete all the game objects in the level select scene. \
+\
+Fin - There are also very few correct tutorials on how to do sound menus in Unity. I would, though, recommend the tutorial "How To Add Sound Effects the RIGHT Way | Unity Tutorial" by Sasquatch B Studios. The name doesn't do it justice, it lines up how to play sound effects in a way that makes it much easier to build upon, how to set up a sound effects menu, and how to make mixers for sound in Unity. \
 \
 Attributions: \
 Simple Scene Fade Load System by FlatTutorials \
@@ -20,5 +26,6 @@ Water SFX by Rocklynn Productions \
 Cleanrow Font by Khurasan \
 \
 Contributions: \
-Eden made the sprites for NPCs and the player, as well as the tile sets and parallax background in the level select. Furthermore, she made the score and implemented sfx. 
+Eden made the sprites for NPCs and the player, as well as the tile sets and parallax background in the level select. Furthermore, she made the score and implemented sfx. \
+\
 Fin made the main menu and pause menus, as well as the ability to change the options menu. They also made a majority of the base level selce scene and fount the font asset.
