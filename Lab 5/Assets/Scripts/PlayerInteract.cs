@@ -96,20 +96,21 @@ public class PlayerInteract : MonoBehaviour
     void AttemptOpen()
     {
         Debug.Log("attempt open called");
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, radius, Vector2.up, LayerMask.GetMask("LevelEntry"));
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, radius, Vector2.up, 0, LayerMask.GetMask("LevelEntry"));
         if (hit)
         {
-            Debug.Log("hit!");
+            Debug.Log("hit! " + hit.collider.gameObject);
             if (hit.collider.gameObject.TryGetComponent(out Open open))
             {
                 Debug.Log("got open script");
-                if (!open)
+                if (!open.opened)
                 {
-                    animator.SetTrigger("Opening");
+                    Debug.Log("opening!");
                     open.SetOpen();
                 }
                 else
                 {
+                    Debug.Log("diving in!");
                     enter.Play();
                     open.gameObject.GetComponent<Enter>().EnterScene();
                 }

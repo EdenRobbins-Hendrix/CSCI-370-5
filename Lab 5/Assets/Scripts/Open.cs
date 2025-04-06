@@ -1,14 +1,15 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Open : MonoBehaviour
 {
     public bool opened;
     public int requiredWeight;
-    SpriteRenderer sprite;
+    TilemapRenderer sprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponent<TilemapRenderer>();
     }
 
     // Update is called once per frame
