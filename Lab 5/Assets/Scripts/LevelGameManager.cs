@@ -106,6 +106,13 @@ public class LevelGameManager : MonoBehaviour
         fishList.Remove(prey);
         Destroy(prey);
 
+        if (fishList.Count == 0)
+        {
+            Debug.Log("All fish eaten!");
+            returnToLevelSelect();
+            //add weight
+        }
+
     }
 
     public void returnToLevelSelect()
