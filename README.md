@@ -21,3 +21,4 @@ Cleanrow Font by Khurasan \
 \
 Contributions: \
 Eden made the sprites for NPCs and the player, as well as the tile sets and parallax background in the level select. Furthermore, she made the score and implemented sfx. 
+Fin made the main menu and pause menus, as well as the ability to change the options menu. They also made a majority of the base level selce scene and fount the font asset.
